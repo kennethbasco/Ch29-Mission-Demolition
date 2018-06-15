@@ -57,7 +57,7 @@ public class Slingshot : MonoBehaviour
     void OnMouseEnter()
     {
         
-        //print("Slingshot: OnMouseEnter()");
+        print("Slingshot: OnMouseEnter()");
 
         launchPoint.SetActive(true);
 
@@ -65,7 +65,7 @@ public class Slingshot : MonoBehaviour
 
     void OnMouseExit()
     {
-        //print("Slingshot: OnMouseExit()");
+        print("Slingshot: OnMouseExit()");
 
         launchPoint.SetActive(false);
 
