@@ -21,7 +21,7 @@ public class Slingshot : MonoBehaviour
     private Rigidbody projectileRigidbody;
 
     static public Vector3 LAUNCH_POS
-    {                                        
+    {
 
         get
         {
@@ -40,7 +40,7 @@ public class Slingshot : MonoBehaviour
 
         S = this;
 
-        Transform launchPointTrans = transform.Find("LaunchPoint");              
+        Transform launchPointTrans = transform.Find("LaunchPoint");
 
         launchPoint = launchPointTrans.gameObject;
 
@@ -77,7 +77,7 @@ public class Slingshot : MonoBehaviour
 
     void OnMouseEnter()
     {
-        
+
         //print("Slingshot: OnMouseEnter()");
 
         launchPoint.SetActive(true);
@@ -126,14 +126,22 @@ public class Slingshot : MonoBehaviour
 
         }
 
-        Vector3 projPos = launchPos + mouseDelta;
-
-        projectile.transform.position = projPos;
 
 
+        
+            //Vector3 projPos = launchPos + mouseDelta;
 
-        if (Input.GetMouseButtonUp(0))
-        {                                         // e
+            //projectile.transform.position = projPos;
+
+        
+            
+
+
+
+            if (Input.GetMouseButtonUp(0))
+        {
+
+            
 
             // The mouse has been released
 
@@ -143,7 +151,7 @@ public class Slingshot : MonoBehaviour
 
             projectileRigidbody.velocity = -mouseDelta * velocityMult;
 
-           // Vector3 test1 = new Vector3(-16, 8, 0);
+            // Vector3 test1 = new Vector3(-16, 8, 0);
 
             //projectileRigidbody.velocity = test1; 
 
