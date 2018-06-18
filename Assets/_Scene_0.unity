@@ -1133,6 +1133,7 @@ Transform:
   m_PrefabParentObject: {fileID: 4742415419423266, guid: 442a35da9ad750440bcc55961d2db58f,
     type: 2}
   m_PrefabInternal: {fileID: 1483703607}
+<<<<<<< HEAD
 --- !u!1 &1532485533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1262,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDist: 0.1
+=======
+>>>>>>> parent of f2ded52... Projectile Line
 --- !u!1 &1665523696
 GameObject:
   m_ObjectHideFlags: 0

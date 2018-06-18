@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Slingshot : MonoBehaviour {
 
+<<<<<<< HEAD
     static private Slingshot S;
 
     [Header("Set in Inspector")]                                            // a
+=======
+    [Header("Set in Inspector")]
+>>>>>>> parent of f2ded52... Projectile Line
 
     public GameObject prefabProjectile;
 
@@ -27,6 +31,7 @@ public class Slingshot : MonoBehaviour {
     private Rigidbody projectileRigidbody;
 
 
+<<<<<<< HEAD
     static public Vector3 LAUNCH_POS
     {                                        // b
 
@@ -47,6 +52,12 @@ public class Slingshot : MonoBehaviour {
         S = this;
 
         Transform launchPointTrans = transform.Find("LaunchPoint");              // a
+=======
+    void Awake()
+    {
+
+        Transform launchPointTrans = transform.Find("LaunchPoint");              
+>>>>>>> parent of f2ded52... Projectile Line
 
         launchPoint = launchPointTrans.gameObject;
 
