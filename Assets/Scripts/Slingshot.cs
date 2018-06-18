@@ -10,7 +10,7 @@ public class Slingshot : MonoBehaviour
     [Header("Set in Inspector")]
 
     public GameObject prefabProjectile;
-    private float velocityMult = 8f;
+    public float velocityMult = 8f;
 
     [Header("Set Dynamically")]
 
@@ -54,20 +54,23 @@ public class Slingshot : MonoBehaviour
     void OnMouseDown()
     {
 
+        // The player has pressed the mouse button while over Slingshot
+
         aimingMode = true;
+
+        // Instantiate a Projectile
 
         projectile = Instantiate(prefabProjectile) as GameObject;
 
+        // Start it at the launchPoint
+
         projectile.transform.position = launchPos;
 
-        projectile.GetComponent<Rigidbody>().isKinematic = true;
+        // Set it to isKinematic for now
 
-        projectileRigidbody = projectile.GetComponent<Rigidbody>();
+        projectileRigidbody = projectile.GetComponent<Rigidbody>();                // a
 
         projectileRigidbody.isKinematic = true;
-
-
-
 
     }
 
@@ -75,7 +78,7 @@ public class Slingshot : MonoBehaviour
     void OnMouseEnter()
     {
         
-        print("Slingshot: OnMouseEnter()");
+        //print("Slingshot: OnMouseEnter()");
 
         launchPoint.SetActive(true);
 
@@ -83,7 +86,7 @@ public class Slingshot : MonoBehaviour
 
     void OnMouseExit()
     {
-        print("Slingshot: OnMouseExit()");
+        //print("Slingshot: OnMouseExit()");
 
         launchPoint.SetActive(false);
 
@@ -139,6 +142,10 @@ public class Slingshot : MonoBehaviour
             projectileRigidbody.isKinematic = false;
 
             projectileRigidbody.velocity = -mouseDelta * velocityMult;
+
+           // Vector3 test1 = new Vector3(-16, 8, 0);
+
+            //projectileRigidbody.velocity = test1; 
 
             FollowCam.POI = projectile;
 
