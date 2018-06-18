@@ -2,38 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slingshot : MonoBehaviour {
+public class Slingshot : MonoBehaviour
+{
 
-<<<<<<< HEAD
     static private Slingshot S;
 
-    [Header("Set in Inspector")]                                            // a
-=======
     [Header("Set in Inspector")]
->>>>>>> parent of f2ded52... Projectile Line
 
     public GameObject prefabProjectile;
+    private float velocityMult = 8f;
 
-    public float velocityMult = 8f;
-
-    // fields set dynamically
-
-    [Header("Set Dynamically")]                                             // a
+    [Header("Set Dynamically")]
 
     public GameObject launchPoint;
-
-    public Vector3 launchPos;                                   // b
-
-    public GameObject projectile;                                  // b
-
-    public bool aimingMode;                                  // b
-
+    public Vector3 launchPos;
+    public GameObject projectile;
+    public bool aimingMode;
     private Rigidbody projectileRigidbody;
 
-
-<<<<<<< HEAD
     static public Vector3 LAUNCH_POS
-    {                                        // b
+    {                                        
 
         get
         {
@@ -46,87 +34,71 @@ public class Slingshot : MonoBehaviour {
 
     }
 
+
     void Awake()
     {
 
         S = this;
 
-        Transform launchPointTrans = transform.Find("LaunchPoint");              // a
-=======
-    void Awake()
-    {
-
         Transform launchPointTrans = transform.Find("LaunchPoint");              
->>>>>>> parent of f2ded52... Projectile Line
 
         launchPoint = launchPointTrans.gameObject;
 
-        launchPoint.SetActive(false);                                          // b
+        launchPoint.SetActive(false);
 
         launchPos = launchPointTrans.position;
 
     }
 
 
-
-    void OnMouseEnter()
-    {
-
-        //print("Slingshot:OnMouseEnter()");
-
-        launchPoint.SetActive(true);                                           // b
-
-    }
-
-
-
-    void OnMouseExit()
-    {
-
-        //print("Slingshot:OnMouseExit()");
-
-        launchPoint.SetActive(false);                                          // b
-
-    }
-
     void OnMouseDown()
-    {                                                    // d
-
-        // The player has pressed the mouse button while over Slingshot
+    {
 
         aimingMode = true;
 
-        // Instantiate a Projectile
-
         projectile = Instantiate(prefabProjectile) as GameObject;
-
-        // Start it at the launchPoint
 
         projectile.transform.position = launchPos;
 
-        // Set it to isKinematic for now
-
         projectile.GetComponent<Rigidbody>().isKinematic = true;
 
-        projectileRigidbody = projectile.GetComponent<Rigidbody>();                // a
+        projectileRigidbody = projectile.GetComponent<Rigidbody>();
 
         projectileRigidbody.isKinematic = true;
 
+
+
+
+    }
+
+
+    void OnMouseEnter()
+    {
+        
+        print("Slingshot: OnMouseEnter()");
+
+        launchPoint.SetActive(true);
+
+    }
+
+    void OnMouseExit()
+    {
+        print("Slingshot: OnMouseExit()");
+
+        launchPoint.SetActive(false);
 
     }
 
     void Update()
     {
 
-        // If Slingshot is not in aimingMode, don't run this code
-
-        if (!aimingMode) return;                                                   // b
+        if (!aimingMode) return;
 
 
 
         // Get the current mouse position in 2D screen coordinates
 
-        Vector3 mousePos2D = Input.mousePosition;                                  // c
+        Vector3 mousePos2D = Input.mousePosition;
 
         mousePos2D.z = -Camera.main.transform.position.z;
 
@@ -138,7 +110,7 @@ public class Slingshot : MonoBehaviour {
 
         Vector3 mouseDelta = mousePos3D - launchPos;
 
-        // Limit mouseDelta to the radius of the Slingshot SphereCollider          // d
+        // Limit mouseDelta to the radius of the Slingshot SphereCollider          
 
         float maxMagnitude = this.GetComponent<SphereCollider>().radius;
 
@@ -150,11 +122,6 @@ public class Slingshot : MonoBehaviour {
             mouseDelta *= maxMagnitude;
 
         }
-
-
-
-
-        // Move the projectile to this new position
 
         Vector3 projPos = launchPos + mouseDelta;
 
@@ -173,11 +140,11 @@ public class Slingshot : MonoBehaviour {
 
             projectileRigidbody.velocity = -mouseDelta * velocityMult;
 
+            FollowCam.POI = projectile;
+
             projectile = null;
 
         }
 
     }
-
-
 }
