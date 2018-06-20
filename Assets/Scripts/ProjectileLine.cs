@@ -121,7 +121,7 @@ public class ProjectileLine : MonoBehaviour {
             points.Add(pt);
 
             line.positionCount = 2;
-
+              
             // Sets the first two points
 
             line.SetPosition(0, points[0]);

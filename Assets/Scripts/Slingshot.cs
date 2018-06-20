@@ -129,9 +129,9 @@ public class Slingshot : MonoBehaviour
 
 
         
-            //Vector3 projPos = launchPos + mouseDelta;
+            Vector3 projPos = launchPos + mouseDelta;
 
-            //projectile.transform.position = projPos;
+            projectile.transform.position = projPos;
 
         
             
